@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Lidere 2026 — Sebrae Amazonas | Eleve o desempenho do seu time</title>
-<meta name="description" content="Programa de liderança do Sebrae Amazonas para empresários e gestores. De R$ 10.000 por R$ 1.000 — o Sebrae cobre R$ 9.000. 2 workshops, 4 mentorias e análise de perfil Facet5. Últimas vagas.">
+<meta name="description" content="Programa de liderança do Sebrae Amazonas para empresários e gestores. De R$ 4.000 por R$ 1.000 — o Sebrae paga R$ 3.000. 2 workshops, 4 mentorias e análise de perfil Facet5. 83% das vagas preenchidas.">
 <meta name="robots" content="INDEX,FOLLOW">
 
 <link rel="preconnect" href="https://image.divulga.sebraeam.com.br" crossorigin>
@@ -12,14 +12,19 @@
 <link rel="dns-prefetch" href="https://www.youtube.com">
 
 <!--
-  AJUSTES RAPIDOS ANTES DE PUBLICAR:
+  ================= AJUSTES ANTES DE PUBLICAR =================
   1) Troque todos os href="#inscricao" pelo link real do formulario de inscricao.
-  2) IMPORTANTE (ancora de preco): confirme que R$ 10.000 e o VALOR CHEIO REAL do programa.
-     A tecnica "de R$ 10.000 por R$ 1.000" so e honesta/segura (CDC) se esse valor for verdadeiro.
-     Se for outro, ajuste os numeros marcados com VALOR-CHEIO e SUBSIDIO.
-  3) Fonte de sistema (carrega instantaneo). Mande a fonte de marca do Lidere se quiser trocar --font.
-  4) GTM: seu container GTM-5WLRLP9L esta indicado no fim do arquivo (carregar assincrono).
-  5) WhatsApp (92) 9 8634-7019 e e-mail luciclea@am.sebrae.com.br - confira antes de subir.
+  2) DEPOIMENTOS: a secao #depoimentos esta com placeholders marcados.
+     Substitua pelos depoimentos REAIS (fala, nome, empresa, foto) antes de publicar.
+     Procure por "PLACEHOLDER-DEPOIMENTO" no codigo. Remova a classe "is-placeholder"
+     de cada card depois de preencher (ela e so o aviso visual tracejado).
+  3) BARRA DE VAGAS: esta em 83%. Mantenha o numero alinhado com a ocupacao real das turmas.
+     Para alterar: mude data-pct="83" e o texto do percentual na secao #turmas.
+  4) ANCORA DE PRECO: De R$ 4.000 / Por R$ 1.000 / Sebrae paga R$ 3.000 (75%).
+     Pontos marcados no codigo com VALOR-CHEIO e SUBSIDIO.
+  5) GTM: container GTM-5WLRLP9L indicado no fim do arquivo (carregar assincrono).
+  6) Contatos: WhatsApp (92) 9 8634-7019 / luciclea@am.sebrae.com.br - confira antes de subir.
+  =============================================================
 -->
 
 <style>
@@ -45,6 +50,7 @@
   .eyebrow{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ciano)}
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;background:var(--verde);color:#fff;font-weight:800;font-size:17px;padding:15px 26px;border-radius:999px;border:0;cursor:pointer;box-shadow:0 8px 20px rgba(0,150,64,.28);transition:transform .12s ease, box-shadow .12s ease;text-align:center}
   .btn:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(0,150,64,.34)}
+  .btn:focus-visible{outline:3px solid var(--amarelo);outline-offset:3px}
   .btn--ghost{background:#fff;color:var(--azul);border:2px solid var(--azul);box-shadow:none}
   .btn--ghost:hover{background:var(--azul);color:#fff}
   .btn--sm{padding:10px 18px;font-size:15px}
@@ -65,14 +71,22 @@
   .hero-img{position:relative}
   .hero-img img{border-radius:var(--radius);box-shadow:var(--sombra);width:100%;object-fit:cover}
   @media(max-width:860px){.hero-grid{grid-template-columns:1fr;gap:28px}.hero-img{order:-1}.hero .lead{max-width:none}}
+
+  /* ===== Faixa de oferta — ancora De / Por ===== */
   .offer{background:var(--azul);color:#fff;padding:34px 0}
-  .offer-in{display:flex;align-items:center;justify-content:center;gap:28px;flex-wrap:wrap;text-align:center}
-  .offer .old{font-size:22px;opacity:.75;text-decoration:line-through;text-decoration-thickness:2px}
-  .offer .new{font-size:clamp(30px,5vw,48px);font-weight:800;line-height:1}
-  .offer .new small{display:block;font-size:14px;font-weight:600;opacity:.9;letter-spacing:.02em;margin-top:4px}
+  .offer-in{display:flex;align-items:center;justify-content:center;gap:30px;flex-wrap:wrap;text-align:center}
+  .price-block{display:flex;flex-direction:column;align-items:center}
+  .de{display:flex;align-items:baseline;gap:8px;opacity:.72;font-size:21px;margin-bottom:2px}
+  .de .lbl{font-size:13px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;opacity:.9}
+  .de .val{text-decoration:line-through;text-decoration-thickness:2px}
+  .por{display:flex;align-items:baseline;gap:10px}
+  .por .lbl{font-size:16px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--amarelo)}
+  .por .val{font-size:clamp(32px,5.4vw,52px);font-weight:800;line-height:1}
+  .parcela{font-size:14px;font-weight:600;opacity:.9;margin-top:5px}
   .offer .pill{background:var(--amarelo);color:var(--azul-esc);font-weight:800;font-size:15px;padding:8px 16px;border-radius:999px}
-  .offer .cover{max-width:30ch;font-size:15px;opacity:.95;text-align:left}
-  @media(max-width:640px){.offer .cover{text-align:center}}
+  .offer .cover{max-width:31ch;font-size:15px;opacity:.95;text-align:left;margin:0}
+  @media(max-width:680px){.offer .cover{text-align:center}}
+
   .benes{background:var(--bg-soft);padding:22px 0}
   .benes-in{display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:center;align-items:center}
   .benes .b{display:flex;align-items:center;gap:9px;font-weight:600;font-size:15.5px;color:var(--tinta)}
@@ -98,7 +112,32 @@
   .step p{margin:0;font-size:15px;opacity:.9}
   .how-img img{border-radius:var(--radius);box-shadow:var(--sombra);width:100%}
   @media(max-width:860px){.how-grid{grid-template-columns:1fr;gap:28px}.how-img{order:-1}}
-  .turmas-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;max-width:820px;margin:8px auto 0}
+
+  /* ===== Depoimentos ===== */
+  .depos{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:8px}
+  .depo{background:#fff;border:1px solid var(--linha);border-radius:var(--radius);padding:28px 26px 24px;box-shadow:var(--sombra);margin:0;display:flex;flex-direction:column;gap:18px}
+  .depo .aspas{font-size:44px;line-height:.6;color:var(--ciano);font-weight:800;height:22px}
+  .depo blockquote{margin:0;font-size:16.5px;color:var(--tinta);flex:1}
+  .depo figcaption{display:flex;align-items:center;gap:13px;border-top:1px solid var(--linha);padding-top:16px}
+  .depo .av{flex:0 0 auto;width:46px;height:46px;border-radius:50%;background:var(--azul);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;overflow:hidden}
+  .depo .av img{width:100%;height:100%;object-fit:cover}
+  .depo .who b{display:block;font-size:15.5px;color:var(--azul)}
+  .depo .who span{font-size:13.5px;color:var(--cinza)}
+  .depo.is-placeholder{border:2px dashed var(--ciano);background:#f7fcff}
+  .depo.is-placeholder blockquote{color:var(--cinza);font-style:italic}
+  .aviso-placeholder{max-width:820px;margin:0 auto 26px;background:#fff7e0;border:1px solid var(--amarelo);border-radius:12px;padding:14px 18px;font-size:14.5px;color:#6b5200;text-align:center}
+  @media(max-width:900px){.depos{grid-template-columns:1fr}}
+
+  /* ===== Turmas + barra de vagas ===== */
+  .vagas{max-width:820px;margin:0 auto 34px;background:#fff;border:1px solid var(--linha);border-radius:var(--radius);padding:22px 26px;box-shadow:var(--sombra)}
+  .vagas-top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:12px}
+  .vagas-label{font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--cinza)}
+  .vagas-pct{font-size:26px;font-weight:800;color:var(--verde);line-height:1}
+  .bar{height:14px;border-radius:999px;background:#e9edf4;overflow:hidden}
+  .bar .fill{height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,var(--verde),#00c853);transition:width 1.2s cubic-bezier(.22,.9,.3,1)}
+  .vagas-note{margin:12px 0 0;font-size:14.5px;color:var(--cinza);text-align:center}
+  .vagas-note b{color:var(--tinta)}
+  .turmas-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;max-width:820px;margin:0 auto}
   .turma{position:relative;background:#fff;border:2px solid var(--linha);border-radius:var(--radius);padding:30px 26px;text-align:center;box-shadow:var(--sombra);transition:border-color .15s ease, transform .15s ease}
   .turma:hover{border-color:var(--verde);transform:translateY(-4px)}
   .turma .flag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--verde);color:#fff;font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:5px 14px;border-radius:999px;white-space:nowrap}
@@ -107,13 +146,16 @@
   .turma .datas{font-size:17px;font-weight:600;margin-bottom:22px}
   .turma .datas span{display:block;color:var(--tinta)}
   @media(max-width:640px){.turmas-grid{grid-template-columns:1fr}}
+
+  /* ===== Investimento ===== */
   .invest{background:var(--bg-soft)}
   .invest-card{max-width:720px;margin:0 auto;background:#fff;border:1px solid var(--linha);border-radius:22px;box-shadow:var(--sombra);overflow:hidden}
-  .invest-top{background:var(--azul);color:#fff;text-align:center;padding:26px 20px}
-  .invest-top .eyebrow{color:var(--amarelo)}
-  .invest-top .old{font-size:20px;opacity:.7;text-decoration:line-through;text-decoration-thickness:2px;margin-top:6px}
-  .invest-top .price{font-size:clamp(38px,7vw,60px);font-weight:800;line-height:1;margin:2px 0}
-  .invest-top .cond{font-size:15px;opacity:.92;margin-top:8px}
+  .invest-top{background:var(--azul);color:#fff;text-align:center;padding:28px 20px 26px}
+  .invest-top .eyebrow{color:var(--amarelo);margin-bottom:14px}
+  .invest-top .de{justify-content:center;font-size:22px}
+  .invest-top .por{justify-content:center}
+  .invest-top .por .val{font-size:clamp(40px,7.4vw,62px)}
+  .invest-top .cond{font-size:15px;opacity:.92;margin-top:10px}
   .invest-body{padding:28px 26px}
   .invest-body ul{list-style:none;margin:0 0 22px;padding:0;display:grid;gap:12px}
   .invest-body li{display:flex;gap:12px;align-items:flex-start;font-size:16px}
@@ -150,19 +192,22 @@
   .facade .play svg{margin-left:5px}
   .facade .cap{position:absolute;left:0;right:0;bottom:0;padding:20px 22px;background:linear-gradient(transparent,rgba(0,0,0,.72));color:#fff;font-weight:700;font-size:18px}
   @media(max-width:620px){
-    body{font-size:16px}
+    body{font-size:16px;padding-bottom:74px}
     section{padding:48px 0}
     .sticky-cta{display:block}
-    body{padding-bottom:74px}
     .cookie{bottom:84px}
     .hero{padding:40px 0 36px}
   }
-  @media (prefers-reduced-motion: reduce){*{scroll-behavior:auto !important;transition:none !important}}
+  @media (prefers-reduced-motion: reduce){
+    *{scroll-behavior:auto !important;transition:none !important}
+    .bar .fill{transition:none !important}
+  }
 </style>
 </head>
 <body>
 
-<div class="topbar">O Sebrae Amazonas cobre <b>R$ 9.000</b> do seu investimento — <b>últimas vagas</b>.</div>
+<!-- SUBSIDIO -->
+<div class="topbar">O Sebrae Amazonas paga <b>R$ 3.000</b> do seu investimento — <b>83% das vagas já preenchidas</b>.</div>
 
 <header>
   <div class="nav">
@@ -188,14 +233,18 @@
   </div>
 </section>
 
+<!-- ===== Faixa de oferta — ancora De / Por ===== -->
 <section class="offer" id="oferta">
   <div class="wrap offer-in">
-    <div>
-      <div class="old">De R$ 10.000</div>
-      <div class="new">R$ 1.000 <small>ou 12x de R$ 83,34 sem juros</small></div>
+    <div class="price-block">
+      <!-- VALOR-CHEIO -->
+      <div class="de"><span class="lbl">De</span><span class="val">R$ 4.000</span></div>
+      <div class="por"><span class="lbl">Por</span><span class="val">R$ 1.000</span></div>
+      <div class="parcela">ou 12x de R$ 83,34 sem juros</div>
     </div>
-    <div class="pill">Sebrae cobre 90%</div>
-    <p class="cover">Um programa de <b>R$ 10.000</b>. O <b>Sebrae Amazonas paga R$ 9.000</b> para você participar — você investe apenas R$ 1.000.</p>
+    <div class="pill">Sebrae paga 75%</div>
+    <!-- SUBSIDIO -->
+    <p class="cover">Um programa de <b>R$ 4.000</b>. O <b>Sebrae Amazonas paga R$ 3.000</b> para você participar — você investe apenas R$ 1.000.</p>
   </div>
 </section>
 
@@ -268,12 +317,75 @@
   </div>
 </section>
 
+<!-- =====================================================================
+     PLACEHOLDER-DEPOIMENTO
+     Substitua os 3 cards abaixo pelos depoimentos REAIS dos participantes.
+     Em cada card: troque o texto do <blockquote>, o nome e a empresa.
+     Para usar foto, troque o conteudo da div .av por: <img src="URL" alt="Nome">
+     Depois de preencher, REMOVA a classe "is-placeholder" de cada <figure>
+     e apague o bloco .aviso-placeholder logo abaixo do titulo.
+     ===================================================================== -->
+<section id="depoimentos" style="background:var(--bg-soft)">
+  <div class="wrap">
+    <div class="kicker center">
+      <div class="eyebrow">Quem já passou pelo Lidere</div>
+      <h2>O que dizem os participantes</h2>
+    </div>
+
+    <div class="aviso-placeholder">
+      ⚠️ Área reservada para os depoimentos reais — substituir antes de publicar.
+    </div>
+
+    <div class="depos">
+      <figure class="depo is-placeholder">
+        <div class="aspas">"</div>
+        <blockquote>[Depoimento 1 — cole aqui a fala real do participante sobre o que mudou na liderança e no resultado da empresa.]</blockquote>
+        <figcaption>
+          <div class="av">—</div>
+          <div class="who"><b>[Nome do participante]</b><span>[Empresa · Manaus]</span></div>
+        </figcaption>
+      </figure>
+
+      <figure class="depo is-placeholder">
+        <div class="aspas">"</div>
+        <blockquote>[Depoimento 2 — cole aqui a fala real do participante.]</blockquote>
+        <figcaption>
+          <div class="av">—</div>
+          <div class="who"><b>[Nome do participante]</b><span>[Empresa · Manaus]</span></div>
+        </figcaption>
+      </figure>
+
+      <figure class="depo is-placeholder">
+        <div class="aspas">"</div>
+        <blockquote>[Depoimento 3 — cole aqui a fala real do participante.]</blockquote>
+        <figcaption>
+          <div class="av">—</div>
+          <div class="who"><b>[Nome do participante]</b><span>[Empresa · Manaus]</span></div>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
 <section id="turmas">
   <div class="wrap">
     <div class="kicker center">
       <div class="eyebrow">Últimas vagas</div>
       <h2>Prepare-se para escolher sua turma</h2>
     </div>
+
+    <!-- BARRA DE VAGAS — manter alinhada com a ocupacao real das turmas -->
+    <div class="vagas">
+      <div class="vagas-top">
+        <span class="vagas-label">Vagas preenchidas</span>
+        <span class="vagas-pct">83%</span>
+      </div>
+      <div class="bar" role="progressbar" aria-valuenow="83" aria-valuemin="0" aria-valuemax="100" aria-label="83% das vagas preenchidas">
+        <div class="fill" id="vagas-fill" data-pct="83"></div>
+      </div>
+      <p class="vagas-note">As turmas de Manaus estão fechando. <b>Restam poucas vagas</b> para agosto e setembro.</p>
+    </div>
+
     <div class="turmas-grid">
       <div class="turma">
         <div class="flag">Últimas vagas</div>
@@ -302,13 +414,15 @@
     <div class="invest-card">
       <div class="invest-top">
         <div class="eyebrow">Programa completo</div>
-        <div class="old">De R$ 10.000</div>
-        <div class="price">R$ 1.000</div>
+        <!-- VALOR-CHEIO -->
+        <div class="de"><span class="lbl">De</span><span class="val">R$ 4.000</span></div>
+        <div class="por"><span class="lbl">Por</span><span class="val">R$ 1.000</span></div>
         <div class="cond">ou <b>12x de R$ 83,34</b> sem juros no cartão · à vista no PIX ou boleto</div>
       </div>
       <div class="invest-body">
         <ul>
-          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="#009640" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>O Sebrae Amazonas cobre R$ 9.000 (90%)</b> do valor cheio do programa.</span></li>
+          <!-- SUBSIDIO -->
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="#009640" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>O Sebrae Amazonas paga R$ 3.000 (75%)</b> do valor do programa.</span></li>
           <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="#009640" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>2 workshops + 4 sessões de mentoria individual.</span></li>
           <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="#009640" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Análise de perfil com a ferramenta internacional Facet5.</span></li>
           <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="#009640" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Materiais exclusivos e networking de alto nível.</span></li>
@@ -332,8 +446,9 @@
         <div class="body">Donos e donas de Microempresas ou Empresas de Pequeno Porte do Amazonas que lideram equipes e já têm a estrutura operacional mais consolidada.</div>
       </details>
       <details>
-        <summary>Por que R$ 1.000 se o programa custa R$ 10.000? <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="#0b2e6e" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
-        <div class="body">Porque o Sebrae Amazonas subsidia R$ 9.000 do valor para fortalecer a liderança das pequenas empresas do estado. O valor cheio do programa é R$ 10.000; com o apoio do Sebrae, você investe apenas R$ 1.000. Não há pegadinha — é a missão do Sebrae de desenvolver quem empreende no Amazonas.</div>
+        <summary>Por que R$ 1.000 se o programa custa R$ 4.000? <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="#0b2e6e" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+        <!-- SUBSIDIO -->
+        <div class="body">Porque o Sebrae Amazonas paga R$ 3.000 do valor para fortalecer a liderança das pequenas empresas do estado. O programa custa R$ 4.000; com o apoio do Sebrae, você investe apenas R$ 1.000. Não há pegadinha — é a missão do Sebrae de desenvolver quem empreende no Amazonas.</div>
       </details>
       <details>
         <summary>É um curso gratuito? <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="#0b2e6e" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
@@ -350,7 +465,7 @@
 <section class="final">
   <div class="wrap">
     <h2>Sua liderança em outro patamar começa agora</h2>
-    <p>São as últimas vagas das turmas de Manaus. Um programa de R$ 10.000 com R$ 9.000 pagos pelo Sebrae — você investe R$ 1.000.</p>
+    <p>83% das vagas já foram preenchidas. Um programa de R$ 4.000 com R$ 3.000 pagos pelo Sebrae — você investe R$ 1.000.</p>
     <a href="#inscricao" class="btn" style="font-size:18px;padding:16px 34px">Garantir minha vaga · R$ 1.000</a>
   </div>
 </section>
@@ -380,6 +495,7 @@
 </div>
 
 <script>
+  // Fachada do YouTube: o iframe pesado so carrega no clique
   (function(){
     var f = document.getElementById('video-facade');
     if(!f) return;
@@ -396,6 +512,23 @@
     f.addEventListener('click', load, {once:true});
     f.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); load(); } }, {once:true});
   })();
+
+  // Barra de vagas: preenche quando entra na tela
+  (function(){
+    var el = document.getElementById('vagas-fill');
+    if(!el) return;
+    var pct = el.getAttribute('data-pct') || '0';
+    function fill(){ el.style.width = pct + '%'; }
+    if(!('IntersectionObserver' in window)){ fill(); return; }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ fill(); io.disconnect(); }
+      });
+    }, {threshold:.4});
+    io.observe(el);
+  })();
+
+  // Cookie
   (function(){
     var c=document.getElementById('cookie'), ok=document.getElementById('cookie-ok');
     if(ok) ok.addEventListener('click',function(){ if(c) c.style.display='none'; });
